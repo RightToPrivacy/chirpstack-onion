@@ -15,8 +15,8 @@
 
 ### BENEFITS:
  * No MITM attacks on Chirpstack .onion
- * NAT punch: no need to change your firewall rules! 
- + no open ports - admin worldwide - securely
+ * NAT punch: no need to change firewall rules (tor onions only make outgoing - no incoming connection allowance needed)
+ + no open ports - admin worldwide - more securely
 
  Optional: block/reject outside localhost for .onion only access
  (hidden service only needs connection through localhost)
