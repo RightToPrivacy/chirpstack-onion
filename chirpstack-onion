@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# righttoprivacy[at]tutanota.com
+# Blog: https://politictech.wordpress.com
+# Mirror: https://www.buymeacoffee.com/politictech/posts
+#
+# WHY? 
+# By default chirpstack is airing in cleartext + captured in easy MITM
+# Let's fix it.
+#
+# Other generic browser encryption certs may display confusing errors: .onion = security
+# .onions are resistant to MITM attacks (Man in the Middle) using end to end between tor clients
+#
+# This script creates secure encryption keys + new .onion Tor Hidden Service Address
+# 
+# Offering an end-to-end encryption option for secure Chirpstack LoRaWAN administration
+#
+# BENEFITS:
+# * No MITM attacks on Chirpstack .onion
+# * NAT punch: no need to change your firewall rules! 
+# + no open ports - admin worldwide - securely
+#
+# Optional: block/reject outside localhost for .onion only access
+# (hidden service only needs connection through localhost)
+#
+echo -e "Installing Tor Service...\n"
+echo '(stop anytime with systemctl stop tor)'
+apt update && apt install tor -y
+sleep .5
+echo -e "configuring Tor..\n"
+sleep .5
+
+# VARIABLES
+port="8080"                                     # Chirpstack http port
+HSD='/var/lib/tor/hidden_service/'              # Location for hidden service directory
+TorConf='/etc/tor/torrc'                        # Tor Configuration File Location (change if needed)
+# Tor2Conf='/usr/share/tor/tor-service-defaults-torrc' # Second Tor Conf Location
+
+# CONFIGURING TOR HIDDEN SERVICE FOR CHIRPSTACK
+echo 'Creating End-To-End Encrypted .onion For Secure Worldwide Chirpstack Admin...'
+sleep 1
+echo ''
+sudo echo "HiddenServiceDir $HSD" >> $TorConf
+sleep .25
+sudo echo "HiddenServicePort 80 127.0.0.1:$port" >> $TorConf
+echo ''
+
+# SHOWING SECURE END TO END ENCRYPTED TOR BROWSER .ONION ADDRESS
+echo -e "Tor configuration finished. Reloading Tor Service...\n"
+echo ""
+sleep .5
+sudo service tor restart
+sleep .5
+echo -e "Your Chirpstack .onion Address:\n"
+sudo cat $HSD/hostname
+
+echo -e "All Done. 👍 \n"
