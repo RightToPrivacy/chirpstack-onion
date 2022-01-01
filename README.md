@@ -3,8 +3,8 @@
     Mirror: https://www.buymeacoffee.com/politictech/posts
 
 ### WHY? 
- By default chirpstack is airing in cleartext + captured in easy MITM
- Let's fix it.
+ By default chirpstack web interface is http/cleartext. Running chirpstack-onion script
+ creates an onion address for easy encryption management (Tor Browser).
 
  Other generic browser encryption certs may display confusing errors: .onion = security
  .onions are resistant to MITM attacks (Man in the Middle) using end to end between tor clients
@@ -20,4 +20,16 @@
 
  Optional: block/reject outside localhost for .onion only access
  (hidden service only needs connection through localhost)
+ 
+ ### USAGE:
+ 
+     sudo bash chirpstack-onion
+     
+     
+ After installing Tor + adding configuration for new onion connecting to port 8080 (Chirpstack),
+ It then prints your new onion address to the screen.
+ 
+ Open that .onion address in Tor Browser to login (or use standard local ip address).
+ 
+ Block the local ip address (leave 127.0.0.1 open for Tor) for Tor Browser only Chirpstack.
 
