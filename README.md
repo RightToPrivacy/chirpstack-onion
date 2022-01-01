@@ -20,16 +20,19 @@
 
  Optional: block/reject outside localhost for .onion only access
  (hidden service only needs connection through localhost)
+
+### REQUIREMENTS:
+
+  Debian based operating system (ie: Armbian, Debian..) for the apt install tor line
  
- ### USAGE:
+### USAGE:
  
      sudo bash chirpstack-onion
      
      
- After installing Tor + adding configuration for new onion connecting to port 8080 (Chirpstack),
- It then prints your new onion address to the screen.
+ chirpstack-onion installs Tor + adds configuration for new onion connecting to port 8080 (Chirpstack),
+ It then prints your new onion address to the screen after generating key + onion address.
  
  Open that .onion address in Tor Browser to login (or use standard local ip address).
  
  Block the local ip address (leave 127.0.0.1 open for Tor) for Tor Browser only Chirpstack.
-
