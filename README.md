@@ -1,6 +1,6 @@
- righttoprivacy[at]tutanota.com
- Blog: https://politictech.wordpress.com
- Mirror: https://www.buymeacoffee.com/politictech/posts
+    righttoprivacy[at]tutanota.com
+    Blog: https://politictech.wordpress.com
+    Mirror: https://www.buymeacoffee.com/politictech/posts
 
 ### WHY? 
  By default chirpstack is airing in cleartext + captured in easy MITM
