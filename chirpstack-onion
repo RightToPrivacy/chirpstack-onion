@@ -20,7 +20,7 @@
 # * NAT punch: no need to change your firewall rules! 
 # + no open ports - admin worldwide - securely
 #
-# Optional: block/reject outside localhost for .onion only access
+# Tip: block/reject all chirpstack access (outside localhost) for .onion only access
 # (hidden service only needs connection through localhost)
 #
 echo -e "Installing Tor Service...\n"
@@ -50,8 +50,38 @@ echo -e "Tor configuration finished. Reloading Tor Service...\n"
 echo ""
 sleep .5
 sudo service tor restart
-sleep .5
-echo -e "Your Chirpstack .onion Address:\n"
-sudo cat $HSD/hostname
 
+cat << "EOF"
+
+                            ~
+                           /~
+                     \  \ /**
+                      \ ////
+                      // //
+                     // //
+                   ///&//
+                  / & /\ \
+                /  & .,,  \
+              /& %  :       \
+            /&  %   :  ;     `\
+           /&' &..%   !..    `.\
+          /&' : &''" !  ``. : `.\
+         /#' % :  "" * .   : : `.\
+        I# :& :  !"  *  `.  : ::  I
+        I &% : : !%.` '. . : : :  I
+        I && :%: .&.   . . : :  : I
+        I %&&&%%: WW. .%. : :     I
+         \&&&##%%%`W! & '  :   ,'/
+          \####ITO%% W &..'  #,'/
+            \W&&##%%&&&&### %./
+              \###j[\##//##}/
+                 ++///~~\//_
+                  \\ \ \ \  \_
+                  /  /    \
+EOF
+
+sleep .5
+echo -e "Chirpstack .onion Address:\n"
+sudo cat $HSD/hostname
+echo -e "Point Tor Browser to address above...\n" && sleep .5
 echo -e "All Done. 👍 \n"
